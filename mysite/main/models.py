@@ -61,7 +61,7 @@ class CategoryModel(BaseModel):
         ('lock', _('Only view, cannot edit it')),
     ]
 
-    name = models.CharField(max_length=128,)
+    name = models.CharField(max_length=128,unique=True)
     create_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     logo = models.CharField(max_length=128,)#logo存放路径
@@ -93,7 +93,7 @@ class User(BaseModel):
         help_text=_(""),
     )
     birth = models.DateTimeField(null= True)
-    wx_id = models.CharField(max_length=64,)
+    wx_id = models.CharField(max_length=64,unique=True)
     phone = models.CharField(max_length=16,null= True)
     identity = models.CharField(max_length=18,null= True) #身份证号
     nick = models.CharField(max_length=64,null= True)
@@ -110,6 +110,9 @@ class User(BaseModel):
         help_text=_(""),
         null= True
     )
+    is_super = models.BooleanField(default=False,
+        editable=True)
+
     class Meta:
         #app_label = 'bbs'
         db_table = 'user'
@@ -122,6 +125,9 @@ class User(BaseModel):
 
     @property
     def is_superuser(self):
+        if self.is_super:
+            return True
+
         return False
    
     

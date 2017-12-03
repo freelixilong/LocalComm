@@ -13,6 +13,8 @@ logger = logging.getLogger('mysite.api.permissions')
 __all__ = ['ModelAccessPermission', 
            'UserPermission', 'IsSuperUser']
 
+def check_user_access(user, model, action, obj,instance=None):
+    return True
 
 class ModelAccessPermission(permissions.BasePermission):
     '''

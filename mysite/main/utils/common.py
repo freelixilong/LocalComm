@@ -19,7 +19,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import DatabaseError
 from django.utils.translation import ugettext_lazy as _
 from django.db.models.fields.related import ForeignObjectRel, ManyToManyField
-
+from functools import reduce
 # Django REST Framework
 from rest_framework.exceptions import ParseError, PermissionDenied
 from django.utils.encoding import smart_str

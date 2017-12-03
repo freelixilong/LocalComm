@@ -282,8 +282,8 @@ class ListAPIView(generics.ListAPIView, GenericAPIView):
     def paginate_queryset(self, queryset):
         page = super(ListAPIView, self).paginate_queryset(queryset)
         # Queries RBAC info & stores into list objects
-        if hasattr(self, 'capabilities_prefetch') and page is not None:
-            cache_list_capabilities(page, self.capabilities_prefetch, self.model, self.request.user)
+        #if hasattr(self, 'capabilities_prefetch') and page is not None:
+        #    cache_list_capabilities(page, self.capabilities_prefetch, self.model, self.request.user)
         return page
 
     def get_description_context(self):

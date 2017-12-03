@@ -29,14 +29,12 @@ from rest_framework import validators
 from rest_framework.utils.serializer_helpers import ReturnList
 
 from main.models import *
-
+from bbs.models import *
 #class BaseSerializer(serializers.ModelSerializer):
 #
 #    class Meta:
 #        model = Snippet
 #        fields = ('id', 'title', 'code', 'linenos', 'language', 'style')
-
-   
 
 class CategorySerializer(serializers.ModelSerializer):
 
@@ -44,5 +42,15 @@ class CategorySerializer(serializers.ModelSerializer):
         model = CategoryModel
         fields = ('name', 'logo', 'status')
 
+class UserSerializer(serializers.ModelSerializer):
 
-  
+    class Meta:
+        model = User
+        fields = ('name', 'logo', 'passwd','sex','birth','wx_id','phone',
+            'identity','nick','address','folder','email','sign','status','is_super')
+
+class BBSCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BBSCategory
+        fields = '__all__'
+
