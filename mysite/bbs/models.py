@@ -72,6 +72,11 @@ class Article(BaseModel):
         verbose_name=_('Current Status'),
         help_text=_(""),
     )
+    res_num = models.IntegerField(
+        blank=False,
+        default=0,
+        help_text=_(""), #对本帖子的回复计数
+    )
     class Meta:
         #app_label = 'bbs'
         db_table = 'bbs_article'
@@ -87,7 +92,7 @@ class ResponseModel(BaseModel): #该表独立出来便宜快速查找
     parent_id = models.ForeignKey(
         'ResponseModel',
         related_name='response_list',
-        blank=False,
+        null=True,
         on_delete=models.CASCADE,
     )
     content = models.CharField(max_length=4096,)
@@ -98,6 +103,14 @@ class ResponseModel(BaseModel): #该表独立出来便宜快速查找
         on_delete=models.CASCADE,
     )
     anonymous = models.BooleanField(default=False,
+        editable=True)
+
+    res_num = models.IntegerField(
+        blank=False,
+        default=0,
+        help_text=_(""), #对本帖子的回复计数
+    )
+    is_new = models.BooleanField(default=True,
         editable=True)
     prohibit_res = models.BooleanField(default=False,
         editable=True)#禁止回复?

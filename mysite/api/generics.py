@@ -448,7 +448,8 @@ class SubListCreateAPIView(SubListAPIView, ListCreateAPIView):
         obj = serializer.save()
         serializer = self.get_serializer(instance=obj)
 
-        headers = {'Location': obj.get_absolute_url(request)}
+        #headers = {'Location': obj.get_absolute_url(request)}
+        headers = {}
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 class SubDetailAPIView(ParentMixin, generics.RetrieveAPIView, GenericAPIView):

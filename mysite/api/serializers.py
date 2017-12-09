@@ -54,3 +54,19 @@ class BBSCategorySerializer(serializers.ModelSerializer):
         model = BBSCategory
         fields = '__all__'
 
+class BBSArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = '__all__'
+
+class BBSResponseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResponseModel
+        fields = '__all__'
+
+class BBSResCreateResSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResponseModel
+        fields = '__all__'
+
+

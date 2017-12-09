@@ -12,8 +12,16 @@ urlpatterns = [
     
     url(r'^articles/(?P<pk>[0-9]+)/$',BBSArticles.as_view()), #获取某个文章，修改，删除---|同以下API构成一个完整的操作
     url(r'^user/(?P<pk>[0-9]+)/articles/$', BBSUserCreateArticles.as_view()), #用户创建文章----|
-    url(r'^articles/(?P<pk>[0-9]+)/sub/$', BBSGetArticleSubRes.as_view()), #获取对某个文章的回复
+
     url(r'^user/(?P<pk>[0-9]+)/subs/$', BBSUserSubArticles.as_view()), #获取某个用户的所有文章
-    #url(r'^user/(?P<pk>[0-9]+)/response/$', bbs.views.get_responses_by_user_id), #获取某个用户的所有回复
+
+    #某个article的回复
+    url(r'^articles/(?P<pk>[0-9]+)/sub/$', BBSGetArticleSubRes.as_view()), #获取对某个文章的回复,创建某个文章的回复
+    
+    url(r'^response/(?P<pk>[0-9]+)/create/$', BBSResCreateRes.as_view()),#对某条回复进行回复
+    url(r'^response/(?P<pk>[0-9]+)/$', BBSResGetDelUp.as_view()),#删除 获取某条回复
+    url(r'^response/(?P<pk>[0-9]+)/subs/$', BBSResSubRes.as_view()), #某个回复的子回复get操作
+
+    url(r'^user/(?P<pk>[0-9]+)/response/$', BBSUserAllRes.as_view()), #获取某个用户的所有回复
 
 ]
